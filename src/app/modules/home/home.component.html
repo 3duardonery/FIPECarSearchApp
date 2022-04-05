@@ -1,0 +1,70 @@
+<div class="flex justify-content-center align-items-center flex-wrap flex-column">
+    <div class="flex flex-column">
+        <div
+            class="flex mb-5 flex-column align-items-center justify-content-center h-4rem font-bold text-white border-round m-2">
+            <h3>Selecione o tipo do veiculo</h3>
+            <p-dropdown [options]="typeOfVehicle" (autoZIndex)="false" (onChange)="onChangeTypeOfVehicleEvent($event)"
+                [showClear]="false" [(ngModel)]="selectedType" placeholder="Selecione um tipo" optionLabel="name">
+            </p-dropdown>
+        </div>
+        <div class="flex mb-5 flex-column align-items-center justify-content-center h-4rem font-bold text-white border-round m-2"
+            *ngIf="showBrandOptions">
+            <h3>Selecione a Marca</h3>
+            <p-dropdown [options]="brands" (onChange)="onChangeBrandEvent($event)" [(ngModel)]="selectedBrand"
+                [hidden]="!showBrandOptions" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"
+                placeholder="Selecione a Marca">
+                <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="selectedBrand">
+                        <div>{{selectedBrand.name}}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-brand pTemplate="item">
+                    <div class="country-item">
+                        <div>{{brand.name}}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="flex mb-5 flex-column align-items-center justify-content-center h-4rem font-bold text-white border-round m-2"
+            *ngIf="showBrandOptions">
+            <h3>Selecione o Modelo</h3>
+            <p-dropdown [options]="carModels" (onChange)="onChangeModelEvent($event)" [(ngModel)]="selectedModel"
+                [hidden]="!showModelsOptions" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"
+                placeholder="Selecione o Modelo">
+                <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="selectedModel">
+                        <div>{{selectedModel.name}}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-model pTemplate="item">
+                    <div class="country-item">
+                        <div>{{model.name}}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="flex mb-5 flex-column align-items-center justify-content-center h-4rem font-bold text-white border-round m-2"
+            *ngIf="showBrandOptions">
+            <h3>Selecione o Ano de Fabricação</h3>
+            <p-dropdown [options]="carYears" [(ngModel)]="selectedYear" [hidden]="!showModelsOptions" optionLabel="name"
+                [filter]="true" filterBy="name" [showClear]="true" placeholder="Selecione o Ano de Fabricação">
+                <ng-template pTemplate="selectedItem">
+                    <div class="country-item country-item-value" *ngIf="selectedYear">
+                        <div>{{selectedYear.name}}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-year pTemplate="item">
+                    <div class="country-item">
+                        <div>{{year.name}}</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <div class="flex flex-column align-items-center justify-content-center h-4rem font-bold text-white border-round m-2"
+            *ngIf="showBrandOptions">
+            <p-button label="Pesquisar" icon="pi pi-check" styleClass="p-button-lg" (onClick)="submitSearch()">
+            </p-button>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

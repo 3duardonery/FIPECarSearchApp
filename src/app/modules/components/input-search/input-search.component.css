@@ -1,0 +1,11 @@
+.input-large {
+    height: 5em;
+    border-radius: 15px 15px;
+    padding: 0 0 0 0;
+    border: 0;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
